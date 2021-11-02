@@ -1,0 +1,114 @@
+using System;
+
+namespace Week5.Riepilogo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Variabili
+            int age; //dichiarazione
+
+            age = 20; //assegnazione
+
+            string a = "ciao";
+
+            //Book b = new Book();
+
+            //Costanti
+            const int c = 100;
+
+            //c = 200; //errore, non posso modificare il valore
+
+            int d, e, f;
+            string g, h, i;
+
+            //age = "venti";
+
+            SeasonsEnum w = SeasonsEnum.Winter;
+            Console.WriteLine(w);
+
+            //output: 16
+            int winter = (int)w;
+            Console.WriteLine(winter);
+
+            DateTime date = new DateTime(2021, 11, 02);
+
+            double l = 2.3;
+            double m = l;
+            m = 5.3;
+
+            Book b = new Book(); //creo istanza -> new
+            b.Title = "Libro a caso"; //do valore alle proprietà
+            b.Author = "Autore del libro";
+
+            Book book = new Book();
+
+            book = b; //NON duplico oggetto MA creo 2 riferimenti a oggetti che si riferiscono allo stesso oggetto
+
+            book.Title = "Un altro libro a caso";
+
+            int n = 3;
+            int res = Sum(n, 4);
+
+            Sub(5, 2);
+
+            int o = 4;
+            Power(o);
+            Console.WriteLine("Fuori dal metodo " + o);
+
+            int p = 5;
+            PowerByRef(ref p);
+            Console.WriteLine("Fuori dal metodo " + p);
+
+            PowerByOut(4, out int result);
+            Console.WriteLine("Fuori dal metodo " + result);
+        }
+
+        //Routines
+        //Funzione
+        private static int Sum(int x, int y)
+        {
+            int result = x + y;
+            return result;
+        }
+
+        //Procedura
+        private static void Sub(int x, int y)
+        {
+            Console.WriteLine(x - y);
+        }
+
+        private static void Power (int x)
+        {
+            x *= x; //+=, -= -> x = x*x
+            Console.WriteLine("Nel metodo " + x);
+        }
+
+        private static void PowerByRef (ref int x)
+        {
+            x *= x;
+            Console.WriteLine("Nel metodo " + x);
+        }
+
+        private static void PowerByOut (int x, out int res)
+        {
+            res = x * x;
+            Console.WriteLine("Dentro il metodo " + res);
+        }
+
+        enum SeasonsEnum
+        {
+            Spring = 2,
+            Summer = 4,
+            Fall = 8,
+            Winter = 16
+        }
+
+        class Book
+        {
+            public string Title { get; set; } //proprietà
+            public string Author { get; set; }
+        }
+    }
+}
